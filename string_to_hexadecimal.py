@@ -5,8 +5,18 @@
 # This program uses an associative array
 
 
-def hexadecimal_translator(string):
+def hexadecimal_translator(string, dictionary):
 
+    if string in dictionary.keys():
+        string = dictionary[string]
+
+    return string
+
+
+def main():
+    # this function uses an associative array
+
+    array_string = []
     dictionary = {}
 
     # adding items
@@ -104,21 +114,10 @@ def hexadecimal_translator(string):
     dictionary["}"] = "0x7d"
     dictionary["~"] = "0x7e"
 
-    if string in dictionary.keys():
-        string = dictionary[string]
-
-    return string
-
-
-def main():
-    # this function uses an associative array
-
-    array_string = []
-
-    print("Starting.....")
+    print("Starting.....\n")
     untranslated_string = input("Please enter a string to be translated into hex: ")
     for a_single_element in untranslated_string:
-        translated_string = hexadecimal_translator(a_single_element)
+        translated_string = hexadecimal_translator(a_single_element, dictionary)
         array_string.append(translated_string)
 
     print("{0} in hex is {1}".format(untranslated_string, array_string))
